@@ -1,0 +1,121 @@
+
+.login-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+  box-sizing: border-box;
+
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.65)),
+    url("/cinequist-background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: white;
+  font-family: inherit;
+  position: relative;
+}
+
+.login-logo {
+  position: absolute;
+  top: 28px;
+  left: 5%;
+  color: #e50914;
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 40px;
+  background: rgba(10, 10, 10, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  box-sizing: border-box;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+}
+
+.login-card h1 {
+  margin: 0 0 12px;
+  font-size: 29px;
+}
+
+.login-subtitle {
+  color: #aaa;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+.login-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-card input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background: #292929;
+  color: white;
+  font: inherit;
+}
+
+.login-card input:focus {
+  outline: 2px solid #e50914;
+}
+
+.login-card form > button {
+  padding: 14px;
+  border: none;
+  border-radius: 5px;
+  background: #e50914;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-card form > button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.login-message {
+  color: #ffb4b4;
+  font-size: 14px;
+}
+
+.login-switch {
+  margin-top: 25px;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.login-switch button {
+  border: none;
+  background: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 25px;
+  }
+
+  .login-logo {
+    font-size: 24px;
+  }
+}
