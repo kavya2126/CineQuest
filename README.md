@@ -1,8 +1,8 @@
-# CineQuist – Movie Discovery and Streaming Platform
+# CineQuest – Movie Discovery and Streaming Platform
 
 ## About the Project
 
-CineQuist is a full-stack movie discovery and streaming platform developed using the MERN stack. It allows users to explore movies, search and filter movies by genre and language, view movie details, watch trailers, and manage their personal watchlists and watch history.
+CineQuest is a full-stack movie discovery and streaming platform developed using the MERN stack. It allows users to explore movies, search and filter movies by genre and language, view movie details, watch trailers, and manage their personal watchlists and watch history.
 
 The platform also includes an admin panel that allows administrators to add, update, and delete movie information.
 
@@ -44,7 +44,7 @@ The platform also includes an admin panel that allows administrators to add, upd
 ## Project Structure
 
 ```text
-CineQuist/
+CineQuest/
 ├── frontend/
 │   ├── src/
 │   ├── public/
@@ -66,8 +66,8 @@ CineQuist/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/kavya2126/CineQuist.git
-cd CineQuist
+git clone https://github.com/kavya2126/CineQuest.git
+cd CineQuest
 ```
 
 ### 2. Install Backend Dependencies
@@ -83,7 +83,7 @@ Create a `.env` file inside the backend folder.
 
 ```env
 PORT=5000
-MONGO_URI=mongodb://127.0.0.1:27017/CineQuist
+MONGO_URI=mongodb://127.0.0.1:27017/CineQuest
 JWT_SECRET=your_own_random_secret
 ```
 
@@ -116,7 +116,7 @@ Open the local frontend URL displayed in your terminal, usually:
 
 ## Database
 
-CineQuist uses MongoDB to store user information, movie details, watchlists, and watch history.
+CineQuest uses MongoDB to store user information, movie details, watchlists, and watch history.
 
 ## Future Enhancements
 
@@ -128,8 +128,8 @@ CineQuist uses MongoDB to store user information, movie details, watchlists, and
 
 ## GitHub Repository
 
-https://github.com/kavya2126/CineQuist
+https://github.com/kavya2126/CineQuest
 
 ## Developed By
 
-CineQuist Project Team
+CineQuest Project Team
