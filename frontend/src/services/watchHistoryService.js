@@ -1,6 +1,6 @@
 const API_URL = 'http://localhost:5000/api/watch-history';
 
-const getToken = () => localStorage.getItem('cinequistToken');
+const getToken = () => localStorage.getItem('CineQuestToken');
 
 // Get the user's watch history
 export const getWatchHistory = async () => {

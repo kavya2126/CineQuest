@@ -25,8 +25,8 @@ function Login() {
       } else {
         const data = await loginUser({ email, password });
 
-        localStorage.setItem('cinequistToken', data.token);
-        localStorage.setItem('cinequistUser', JSON.stringify(data.user));
+        localStorage.setItem('CineQuestToken', data.token);
+        localStorage.setItem('CineQuestUser', JSON.stringify(data.user));
 
         window.location.href = '/';
       }
@@ -41,13 +41,13 @@ function Login() {
 
   return (
     <main className="login-page">
-      <a className="login-logo" href="/">CINEQUIST</a>
+      <a className="login-logo" href="/">CineQuest</a>
 
       <section className="login-card">
         <h1>{isRegister ? 'Create your account' : 'Welcome back'}</h1>
         <p className="login-subtitle">
           {isRegister
-            ? 'Join CineQuist and discover your next favourite movie.'
+            ? 'Join CineQuest and discover your next favourite movie.'
             : 'Sign in to continue your cinematic journey.'}
         </p>
 
@@ -91,7 +91,7 @@ function Login() {
         </form>
 
         <p className="login-switch">
-          {isRegister ? 'Already have an account?' : 'New to CineQuist?'}{' '}
+          {isRegister ? 'Already have an account?' : 'New to CineQuest?'}{' '}
           <button
             type="button"
             onClick={() => {

@@ -155,7 +155,7 @@ function Admin() {
     <main className="admin-page">
       <header className="admin-header">
         <div>
-          <p className="admin-eyebrow">CINEQUIST MANAGEMENT</p>
+          <p className="admin-eyebrow">CineQuest MANAGEMENT</p>
           <h1>Movie Admin Panel</h1>
           <p>Manage your cinema collection.</p>
         </div>

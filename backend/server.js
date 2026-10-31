@@ -17,7 +17,7 @@ app.use(express.json());
 // Home route
 app.get('/', (req, res) => {
   res.json({
-    message: 'Welcome to the CineQuist API!',
+    message: 'Welcome to the CineQuest API!',
     status: 'Backend running successfully',
   });
 });
@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
 app.get('/api/health', (req, res) => {
   res.json({
     success: true,
-    message: 'CineQuist backend is healthy',
+    message: 'CineQuest backend is healthy',
   });
 });
 
@@ -43,7 +43,7 @@ async function startServer() {
     console.log('MongoDB connected successfully!');
 
     app.listen(PORT, () => {
-      console.log(`CineQuist server running on http://localhost:${PORT}`);
+      console.log(`CineQuest server running on http://localhost:${PORT}`);
     });
   } catch (error) {
     console.error('MongoDB connection failed:', error.message);

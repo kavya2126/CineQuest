@@ -26,7 +26,7 @@ export const getMoviesByLanguage = async (language) => {
 export const addMovie = async (movieData) => {
   const config = {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem('cinequistToken')}`,
+      Authorization: `Bearer ${localStorage.getItem('CineQuestToken')}`,
     },
   };
 
@@ -37,7 +37,7 @@ export const addMovie = async (movieData) => {
 export const updateMovie = async (movieId, movieData) => {
   const config = {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem('cinequistToken')}`,
+      Authorization: `Bearer ${localStorage.getItem('CineQuestToken')}`,
     },
   };
 
@@ -52,7 +52,7 @@ export const updateMovie = async (movieId, movieData) => {
 export const deleteMovie = async (movieId) => {
   const config = {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem('cinequistToken')}`,
+      Authorization: `Bearer ${localStorage.getItem('CineQuestToken')}`,
     },
   };
 

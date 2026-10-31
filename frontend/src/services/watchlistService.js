@@ -1,7 +1,7 @@
 const API_URL = 'http://localhost:5000/api/watchlist';
 
 const getHeaders = () => ({
-  Authorization: `Bearer ${localStorage.getItem('cinequistToken')}`,
+  Authorization: `Bearer ${localStorage.getItem('CineQuestToken')}`,
   'Content-Type': 'application/json',
 });
 

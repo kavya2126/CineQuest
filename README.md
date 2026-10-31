@@ -131,5 +131,4 @@ CineQuest uses MongoDB to store user information, movie details, watchlists, and
 https://github.com/kavya2126/CineQuest
 
 ## Developed By
-
 CineQuest Project Team

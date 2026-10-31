@@ -1,5 +1,5 @@
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Login from './Login';
 import { getMovies } from './services/movieService';
 import './App.css';
@@ -253,7 +253,7 @@ function MovieRow({
             )}
 
             <div className="modal-content">
-              <p className="section-label">CINEQUIST MOVIE DETAILS</p>
+              <p className="section-label">CineQuest MOVIE DETAILS</p>
 
               <h2>{selectedMovie.title}</h2>
 
@@ -266,7 +266,7 @@ function MovieRow({
 
               <p>
                 {selectedMovie.description ||
-                  'Discover this movie on CineQuist.'}
+                  'Discover this movie on CineQuest.'}
               </p>
 
               <div className="modal-movie-details">
@@ -377,6 +377,14 @@ function App() {
   const [selectedGenre, setSelectedGenre] = useState('All Genres');
   const [watchlist, setWatchlist] = useState([]);
   const [watchHistory, setWatchHistory] = useState([]);
+  const [searchOpen, setSearchOpen] = useState(false);
+const searchInputRef = useRef(null);
+
+useEffect(() => {
+  if (searchOpen) {
+    searchInputRef.current?.focus();
+  }
+}, [searchOpen]);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -410,7 +418,7 @@ function App() {
       }
     };
 
-    if (localStorage.getItem('cinequistToken')) {
+    if (localStorage.getItem('CineQuestToken')) {
       loadWatchlist();
     }
   }, []);
@@ -426,7 +434,7 @@ function App() {
       }
     };
 
-    if (localStorage.getItem('cinequistToken')) {
+    if (localStorage.getItem('CineQuestToken')) {
       loadWatchHistory();
     }
   }, []);
@@ -555,10 +563,10 @@ function App() {
     });
   };
 
-  const token = localStorage.getItem('cinequistToken');
+  const token = localStorage.getItem('CineQuestToken');
 
   const savedUser = JSON.parse(
-    localStorage.getItem('cinequistUser') || 'null'
+    localStorage.getItem('CineQuestUser') || 'null'
   );
 
   if (!token && window.location.pathname !== '/login') {
@@ -582,7 +590,7 @@ function App() {
   return (
     <div className="app" id="home">
       <header className="navbar">
-        <a className="logo" href="#home">CINEQUIST</a>
+        <a className="logo" href="#home">CineQuest</a>
 
         <nav className="nav-links">
           <a href="#home">Home</a>
@@ -597,39 +605,59 @@ function App() {
             <a href="/admin">Admin</a>
           )}
         </nav>
+        <div
+  className={`catalog-search ${
+    searchOpen ? 'search-open' : ''
+  } ${searchQuery ? 'search-active' : ''}`}
+>
+  <button
+    type="button"
+    className="search-icon"
+    aria-label={searchOpen ? 'Close movie search' : 'Open movie search'}
+    aria-expanded={searchOpen}
+    onClick={() => {
+      if (searchOpen && !searchQuery) {
+        setSearchOpen(false);
+      } else {
+        setSearchOpen(true);
+      }
+    }}
+  >
+    ⌕
+  </button>
 
-        <div className={`catalog-search ${searchQuery ? 'search-active' : ''}`}>
-          <button
-            type="button"
-            className="search-icon"
-            aria-label="Open movie search"
-            onClick={() =>
-              document.getElementById('movie-search-input')?.focus()
-            }
-          >
-            ⌕
-          </button>
+  <input
+    ref={searchInputRef}
+    id="movie-search-input"
+    type="search"
+    placeholder="Titles, people, genres"
+    value={searchQuery}
+    onChange={(event) => setSearchQuery(event.target.value)}
+    onKeyDown={(event) => {
+      if (event.key === 'Escape') {
+        setSearchQuery('');
+        setSearchOpen(false);
+      }
+    }}
+    aria-label="Search movies by title"
+    tabIndex={searchOpen ? 0 : -1}
+  />
 
-          <input
-            id="movie-search-input"
-            type="search"
-            placeholder="Titles, people, genres"
-            value={searchQuery}
-            onChange={(event) => setSearchQuery(event.target.value)}
-            aria-label="Search movies by title"
-          />
-
-          {searchQuery && (
-            <button
-              type="button"
-              className="search-clear"
-              onClick={() => setSearchQuery('')}
-              aria-label="Clear search"
-            >
-              ×
-            </button>
-          )}
-        </div>
+  {searchQuery && (
+    <button
+      type="button"
+      className="search-clear"
+      onClick={() => {
+        setSearchQuery('');
+        setSearchOpen(true);
+        searchInputRef.current?.focus();
+      }}
+      aria-label="Clear search"
+    >
+      ×
+    </button>
+  )}
+</div>
 
         <div className="nav-right">
           <label className="nav-language" htmlFor="language-select">
@@ -657,8 +685,8 @@ function App() {
           <button
             className="logout-button"
             onClick={() => {
-              localStorage.removeItem('cinequistToken');
-              localStorage.removeItem('cinequistUser');
+              localStorage.removeItem('CineQuestToken');
+              localStorage.removeItem('CineQuestUser');
               window.location.replace('/login');
             }}
           >
@@ -711,7 +739,7 @@ function App() {
             <div className="hero-content">
               <p className="eyebrow">
                 <span className="hero-brand-mark">CQ</span>
-                CINEQUIST FEATURED
+                CineQuest FEATURED
               </p>
 
               <h1>{featuredMovie?.title || 'YOUR NEXT STORY'}</h1>
@@ -874,7 +902,7 @@ function App() {
 
             <div id="popular">
               <MovieRow
-                title="Popular on CineQuist"
+                title="Popular on CineQuest"
                 subtitle="YOUR COLLECTION, RANKED"
                 movies={popularMovies}
                 watchlist={watchlist}
@@ -888,7 +916,7 @@ function App() {
               <div className="membership-mark">CQ<span>✳</span></div>
 
               <div>
-                <p className="section-label">THE CINEQUIST EXPERIENCE</p>
+                <p className="section-label">THE CineQuest EXPERIENCE</p>
                 <h2>Every story deserves a screen.</h2>
                 <p>
                   Discover films across languages, genres, and worlds.
@@ -905,10 +933,10 @@ function App() {
           </div>
 
           <footer className="footer">
-            <a className="logo footer-logo" href="#home">CINEQUIST</a>
+            <a className="logo footer-logo" href="#home">CineQuest</a>
             <p>Your screen. Your stories. Your world.</p>
             <p className="copyright">
-              © 2026 CineQuist · Student Project
+              © 2026 CineQuest · Student Project
             </p>
           </footer>
         </main>
@@ -916,5 +944,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
