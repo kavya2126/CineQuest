@@ -1,7 +1,12 @@
 
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/movies';
+// Uses the deployed backend URL in production
+// and localhost during local development.
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+const API_URL = `${API_BASE_URL}/api/movies`;
 
 // Get all movies
 export const getMovies = async () => {
@@ -34,6 +39,7 @@ export const addMovie = async (movieData) => {
   return response.data;
 };
 
+// Update a movie
 export const updateMovie = async (movieId, movieData) => {
   const config = {
     headers: {
@@ -46,9 +52,11 @@ export const updateMovie = async (movieId, movieData) => {
     movieData,
     config
   );
+
   return response.data;
 };
 
+// Delete a movie
 export const deleteMovie = async (movieId) => {
   const config = {
     headers: {
